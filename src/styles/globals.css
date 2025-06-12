@@ -1,0 +1,10 @@
+@import "./reset.css";
+
+/* Font */
+body,
+input,
+button,
+select,
+textarea {
+  font-family: Pretendard, Arial, Helvetica, sans-serif;
+}
