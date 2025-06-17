@@ -77,5 +77,9 @@ const titleStyle = css`
 const menuListContainerStyle = css`
   display: flex;
   align-items: center;
-  gap: 52px;
+  gap: 28px;
+
+  @media screen and (min-width: ${breakpoints.lg}) {
+    gap: 52px;
+  }
 `;
