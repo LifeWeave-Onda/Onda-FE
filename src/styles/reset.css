@@ -129,9 +129,10 @@ button {
   outline: none;
   box-shadow: none;
   overflow: visible;
-  background: inherit;
+  background: transparent;
   cursor: pointer;
   border-radius: 0;
+  color: inherit;
 }
 
 input {
@@ -139,4 +140,10 @@ input {
   margin: 0;
   font: inherit;
   color: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }

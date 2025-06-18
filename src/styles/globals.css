@@ -8,3 +8,20 @@ select,
 textarea {
   font-family: Pretendard, Arial, Helvetica, sans-serif;
 }
+
+/* 일관된 박스 크기 계산 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* no-scrollbar */
+.no-scrollbar {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
