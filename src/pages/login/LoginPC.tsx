@@ -28,30 +28,33 @@ const SOCIAL_LOGIN_BTN = [
 
 export default function LoginPC() {
   return (
-    <div css={LoginStyle}>
-      <div css={LoginTitle}>
+    <div css={loginStyle}>
+      <div css={loginTitle}>
         <img src={MainLogo} alt="logo" width={40} height={40} />
         <h1>온다</h1>
       </div>
-      <div css={LoginInput}>
+      <div css={formWrapperStyle}>
         <form action="">
-          <div css={InputDetail}>
+          <div css={inputDetail}>
             <input type="text" placeholder="아이디" />
-            <div css={PasswordWraper}>
+            <div css={passwordWraper}>
               <input type="password" placeholder="비밀번호 확인" />
               <button type="button" className="PWDBtn">
                 비밀번호 표시
               </button>
             </div>
           </div>
-          <div css={LoginSave}>
-            <input type="checkbox" />
-            <p>아이디 저장</p>
+          <div css={loginSave}>
+            <input type="checkbox" id="saveId" />
+            <label htmlFor="saveId">
+              <span />
+              아이디 저장
+            </label>
           </div>
           <button>로그인</button>
         </form>
       </div>
-      <div css={LoginFind}>
+      <div css={loginFind}>
         {FIND_LIST.map((item, idx) => (
           <div key={item.name}>
             <Link to={item.link}>{item.name}</Link>
@@ -59,19 +62,19 @@ export default function LoginPC() {
           </div>
         ))}
       </div>
-      <div css={SocialBTN}>
+      <div css={socialBTN}>
         {SOCIAL_LOGIN_BTN.map((item) => (
           <button key={item.name}>{item.name}</button>
         ))}
       </div>
-      <div css={OndaRights}>
+      <div css={ondaRights}>
         <p>ⓒOnda.All Rights Reserved.</p>
       </div>
     </div>
   );
 }
 
-const LoginStyle = css`
+const loginStyle = css`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -79,7 +82,7 @@ const LoginStyle = css`
   margin: 0 auto;
 `;
 
-const LoginTitle = css`
+const loginTitle = css`
   display: flex;
   align-items: center;
   gap: 12px;
@@ -90,10 +93,11 @@ const LoginTitle = css`
   h1 {
     font-size: 32px;
     font-weight: 600;
+    color: #222222;
   }
 `;
 
-const LoginInput = css`
+const formWrapperStyle = css`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -114,24 +118,40 @@ const LoginInput = css`
   }
 `;
 
-const LoginSave = css`
+const loginSave = css`
   display: flex;
   align-items: center;
-  gap: 8px;
 
   input {
+    display: none;
+  }
+
+  label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #404040;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+  }
+
+  label > span {
+    display: inline-block;
     width: 18px;
     height: 18px;
     border: 1px solid #d9d9d9;
   }
 
-  p {
-    font-size: 14px;
-    font-weight: 500;
+  input:checked + label > span {
+    background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 13L9 17L19 7' stroke='%2352D9FF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 18px;
   }
 `;
 
-const InputDetail = css`
+const inputDetail = css`
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -149,7 +169,7 @@ const InputDetail = css`
   }
 `;
 
-const PasswordWraper = css`
+const passwordWraper = css`
   position: relative;
   width: 100%;
 
@@ -178,7 +198,7 @@ const PasswordWraper = css`
   }
 `;
 
-const LoginFind = css`
+const loginFind = css`
   display: flex;
   align-items: center;
   gap: 16px;
@@ -193,7 +213,7 @@ const LoginFind = css`
   }
 `;
 
-const SocialBTN = css`
+const socialBTN = css`
   display: flex;
   gap: 12px;
   button {
@@ -205,7 +225,7 @@ const SocialBTN = css`
   }
 `;
 
-const OndaRights = css`
+const ondaRights = css`
   font-size: 10px;
   font-weight: 500;
   color: #666666;
