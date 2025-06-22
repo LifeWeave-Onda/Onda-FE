@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 
-import resetIcon from "@/assets/breeder-list/reset.svg";
+import BreederFilterPanel from "./BreederFilterPanel";
 
 export default function ListGrid() {
   return (
@@ -13,13 +13,7 @@ export default function ListGrid() {
         </span>
       </div>
 
-      <div css={filterContainerStyle}>
-        <button type="button" className="reset-btn">
-          <img src={resetIcon} alt="reset" width={16} height={16} />
-          초기화
-        </button>
-        <div className="divider">|</div>
-      </div>
+      <BreederFilterPanel />
 
       <div css={gridStyle}>
         {Array.from({ length: 5 }).map((_, rowIdx) => (
@@ -62,26 +56,8 @@ const headerStyle = css`
   }
 `;
 
-const filterContainerStyle = css`
-  border-bottom: 1px solid #d9d9d9;
-  display: flex;
-  margin-top: 44px;
-  padding-bottom: 20px;
-  gap: 12px;
-
-  .reset-btn {
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-  }
-
-  .divider {
-    color: #d9d9d9;
-  }
-`;
-
 const gridStyle = css`
-  margin: 60px 0 20%;
+  margin: 120px 0 20%;
   display: flex;
   flex-direction: column;
   gap: 16px;
