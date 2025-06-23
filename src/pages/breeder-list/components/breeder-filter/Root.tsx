@@ -59,8 +59,4 @@ const breederFilterWrapperStyle = ({
   border-radius: ${!isOpen ? "30px" : "10px"};
   border: ${!isOpen ? "none" : "1px solid #D9D9D9"};
   user-select: none;
-  transition:
-    width 0.3s ease,
-    padding 0.3s ease,
-    background-color 0.3s ease;
 `;

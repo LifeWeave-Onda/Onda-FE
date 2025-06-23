@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import resetIcon from "@/assets/breeder-list/reset.svg";
 import searchIcon from "@/assets/breeder-list/search.svg";
 
+import BreederFilterTag from "./components/Tag";
 import BreederFilter from "./components/breeder-filter";
 
 const SORT_LIST = ["추천순", "평점순", "최신순"];
@@ -34,6 +35,7 @@ const ADOPTION_PLACE_LIST = ["브리더", "보호소"];
 
 export default function BreederFilterPanel() {
   const [breedInputValue, setBreedInputValue] = useState("");
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
   const fuse = useMemo(
     () =>
@@ -47,14 +49,34 @@ export default function BreederFilterPanel() {
     return fuse.search(breedInputValue).map((result) => result.item);
   }, [breedInputValue, fuse]);
 
+  const handleTagSelect = (tag: string) => {
+    if (!selectedTags.includes(tag)) {
+      setSelectedTags((prev) => [...prev, tag]);
+    }
+  };
+  const handleTagRemove = (tag: string) => {
+    setSelectedTags((prev) => prev.filter((t) => t !== tag));
+  };
+
   return (
     <>
       <div css={tagContainerStyle}>
-        <button type="button" className="reset-btn">
+        <button
+          type="button"
+          className="reset-btn"
+          onClick={() => setSelectedTags([])}
+        >
           <img src={resetIcon} alt="reset" width={16} height={16} />
           초기화
         </button>
-        <div className="divider">|</div>
+        <div className="divider" />
+        {selectedTags.map((tag) => (
+          <BreederFilterTag
+            key={tag}
+            name={tag}
+            onClick={() => handleTagRemove(tag)}
+          />
+        ))}
       </div>
 
       <div style={{ position: "relative" }}>
@@ -64,7 +86,12 @@ export default function BreederFilterPanel() {
             <BreederFilter.List>
               <div css={listWrapperStyle}>
                 {SORT_LIST.map((item) => (
-                  <button key={item} type="button" className="item">
+                  <button
+                    key={item}
+                    type="button"
+                    className="item"
+                    onClick={() => handleTagSelect(item)}
+                  >
                     {item}
                   </button>
                 ))}
@@ -86,7 +113,12 @@ export default function BreederFilterPanel() {
                 </div>
                 <div className="list">
                   {breedFilteredList.map((item) => (
-                    <button key={item} type="button" className="item">
+                    <button
+                      key={item}
+                      type="button"
+                      className="item"
+                      onClick={() => handleTagSelect(item)}
+                    >
                       {item}
                     </button>
                   ))}
@@ -100,7 +132,12 @@ export default function BreederFilterPanel() {
             <BreederFilter.List>
               <div css={listWrapperStyle}>
                 {LOCATION_LIST.map((item) => (
-                  <button key={item} type="button" className="item">
+                  <button
+                    key={item}
+                    type="button"
+                    className="item"
+                    onClick={() => handleTagSelect(item)}
+                  >
                     {item}
                   </button>
                 ))}
@@ -113,7 +150,12 @@ export default function BreederFilterPanel() {
             <BreederFilter.List>
               <div css={listWrapperStyle}>
                 {ADOPTION_PLACE_LIST.map((item) => (
-                  <button key={item} type="button" className="item">
+                  <button
+                    key={item}
+                    type="button"
+                    className="item"
+                    onClick={() => handleTagSelect(item)}
+                  >
                     {item}
                   </button>
                 ))}
@@ -125,12 +167,16 @@ export default function BreederFilterPanel() {
     </>
   );
 }
+
 const tagContainerStyle = css`
   border-bottom: 1px solid #d9d9d9;
   display: flex;
+  align-items: center;
+  flex-wrap: wrap;
   margin-top: 44px;
   padding-bottom: 20px;
   gap: 12px;
+  min-height: 50px;
 
   .reset-btn {
     display: flex;
@@ -139,13 +185,16 @@ const tagContainerStyle = css`
   }
 
   .divider {
-    color: #d9d9d9;
+    width: 1px;
+    height: 18px;
+    background-color: #d9d9d9;
   }
 `;
 
 const breederFilterContainerStyle = css`
   position: absolute;
   top: 0;
+  z-index: 2;
   display: flex;
   gap: 10px;
   align-items: flex-start;
