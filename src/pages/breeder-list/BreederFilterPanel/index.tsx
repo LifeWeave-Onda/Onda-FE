@@ -1,12 +1,12 @@
 import { css } from "@emotion/react";
-import Fuse from "fuse.js";
-import { useMemo, useState } from "react";
 
 import resetIcon from "@/assets/breeder-list/reset.svg";
 import searchIcon from "@/assets/breeder-list/search.svg";
 
-import BreederFilterTag from "./components/Tag";
-import BreederFilter from "./components/breeder-filter";
+import BreederFilter from "./BreederFilter";
+import BreederFilterTag from "./Tag";
+import { useFuzzySearch } from "./useFuzzySearch";
+import useTagSelect from "./useTagSelect";
 
 const SORT_LIST = ["추천순", "평점순", "최신순"];
 const BREED_LIST = [
@@ -34,38 +34,18 @@ const LOCATION_LIST = [
 const ADOPTION_PLACE_LIST = ["브리더", "보호소"];
 
 export default function BreederFilterPanel() {
-  const [breedInputValue, setBreedInputValue] = useState("");
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const {
+    inputValue: breedInputValue,
+    setInputValue: setBreedInputValue,
+    filteredList: breedFilteredList,
+  } = useFuzzySearch(BREED_LIST);
 
-  const fuse = useMemo(
-    () =>
-      new Fuse(BREED_LIST, {
-        threshold: 0.3,
-      }),
-    [],
-  );
-  const breedFilteredList = useMemo(() => {
-    if (!breedInputValue) return BREED_LIST;
-    return fuse.search(breedInputValue).map((result) => result.item);
-  }, [breedInputValue, fuse]);
-
-  const handleTagSelect = (tag: string) => {
-    if (!selectedTags.includes(tag)) {
-      setSelectedTags((prev) => [...prev, tag]);
-    }
-  };
-  const handleTagRemove = (tag: string) => {
-    setSelectedTags((prev) => prev.filter((t) => t !== tag));
-  };
+  const { selectedTags, selectTag, removeTag, clearTags } = useTagSelect();
 
   return (
     <>
       <div css={tagContainerStyle}>
-        <button
-          type="button"
-          className="reset-btn"
-          onClick={() => setSelectedTags([])}
-        >
+        <button type="button" className="reset-btn" onClick={clearTags}>
           <img src={resetIcon} alt="reset" width={16} height={16} />
           초기화
         </button>
@@ -74,7 +54,7 @@ export default function BreederFilterPanel() {
           <BreederFilterTag
             key={tag}
             name={tag}
-            onClick={() => handleTagRemove(tag)}
+            onClick={() => removeTag(tag)}
           />
         ))}
       </div>
@@ -90,7 +70,7 @@ export default function BreederFilterPanel() {
                     key={item}
                     type="button"
                     className="item"
-                    onClick={() => handleTagSelect(item)}
+                    onClick={() => selectTag(item)}
                   >
                     {item}
                   </button>
@@ -117,7 +97,7 @@ export default function BreederFilterPanel() {
                       key={item}
                       type="button"
                       className="item"
-                      onClick={() => handleTagSelect(item)}
+                      onClick={() => selectTag(item)}
                     >
                       {item}
                     </button>
@@ -136,7 +116,7 @@ export default function BreederFilterPanel() {
                     key={item}
                     type="button"
                     className="item"
-                    onClick={() => handleTagSelect(item)}
+                    onClick={() => selectTag(item)}
                   >
                     {item}
                   </button>
@@ -154,7 +134,7 @@ export default function BreederFilterPanel() {
                     key={item}
                     type="button"
                     className="item"
-                    onClick={() => handleTagSelect(item)}
+                    onClick={() => selectTag(item)}
                   >
                     {item}
                   </button>
