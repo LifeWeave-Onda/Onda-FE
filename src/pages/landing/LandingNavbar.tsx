@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 
 import mainLogo from "@/assets/shared/main-logo.png";
 import { breakpoints, layoutPaddingX } from "@/styles/layout";
+import { zIndex } from "@/styles/zIndex";
 
 const MENU_LIST = [
   { name: "회사소개", link: "" },
-  { name: "브리더입양", link: "" },
+  { name: "브리더입양", link: "/breeder-list" },
   { name: "보호소입양", link: "" },
   { name: "온다브리더", link: "" },
 ];
@@ -47,7 +48,7 @@ const navStyle = (isTransparent: boolean) => css`
   left: 0;
   right: 0;
   top: 0;
-  z-index: 999;
+  z-index: ${zIndex.navbar};
   border-bottom: ${isTransparent ? "none" : "1px solid #9A9A9A"};
   transition:
     background-color 0.3s ease,
