@@ -2,11 +2,13 @@ import { css } from "@emotion/react";
 import { Link } from "react-router-dom";
 
 import MainLogo from "@/assets/shared/main-logo.png";
+import Button from "@/components/ui/Button";
+import Input from "@/components/ui/Input";
 
 const FIND_LIST = [
   {
     name: "아이디/비밀번호 찾기",
-    link: " ",
+    link: "/find-id-password",
   },
   { name: "회원가입", link: " " },
 ];
@@ -36,9 +38,9 @@ export default function LoginPC() {
       <div css={formWrapperStyle}>
         <form action="">
           <div css={inputDetail}>
-            <input type="text" placeholder="아이디" />
+            <Input type="text" placeholder="아이디" />
             <div css={passwordWraper}>
-              <input type="password" placeholder="비밀번호 확인" />
+              <Input type="password" placeholder="비밀번호 확인" />
               <button type="button" className="PWDBtn">
                 비밀번호 표시
               </button>
@@ -51,7 +53,7 @@ export default function LoginPC() {
               아이디 저장
             </label>
           </div>
-          <button>로그인</button>
+          <Button>로그인</Button>
         </form>
       </div>
       <div css={loginFind}>
@@ -104,23 +106,12 @@ const formWrapperStyle = css`
   width: 410px;
   height: 210px;
   margin-top: 32px;
-
-  form > button {
-    background-color: #52d9ff;
-    text-align: center;
-    width: 410px;
-    height: 52px;
-    padding: 14px 27px 14px 16px;
-    color: #222222;
-    font-size: 18px;
-    font-weight: 600;
-    margin-top: 16px;
-  }
 `;
 
 const loginSave = css`
   display: flex;
   align-items: center;
+  margin-bottom: 16px;
 
   input {
     display: none;
@@ -157,33 +148,11 @@ const inputDetail = css`
   flex: 1;
   gap: 12px;
   margin-bottom: 16px;
-
-  input {
-    padding: 14px 27px 14px 16px;
-    border: 1px solid #d9d9d9;
-  }
-  input::placeholder {
-    color: #666666;
-    font-size: 14px;
-    font-weight: 400;
-  }
 `;
 
 const passwordWraper = css`
   position: relative;
   width: 100%;
-
-  input {
-    width: 100%;
-    padding: 14px 27px 14px 16px;
-    border: 1px solid #d9d9d9;
-  }
-
-  input::placeholder {
-    color: #666666;
-    font-size: 14px;
-    font-weight: 400;
-  }
 
   .PWDBtn {
     position: absolute;
@@ -204,6 +173,7 @@ const loginFind = css`
   gap: 16px;
   margin-top: 21px;
   margin-bottom: 33px;
+
   div {
     display: flex;
     gap: 16px;
@@ -216,6 +186,7 @@ const loginFind = css`
 const socialBTN = css`
   display: flex;
   gap: 12px;
+
   button {
     width: 56px;
     height: 56px;
