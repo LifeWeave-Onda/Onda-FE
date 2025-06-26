@@ -1,8 +1,8 @@
 import ResponsiveRenderer from "@/components/layout/ResponsiveRenderer";
 
-import FindMobile from "./findMobile";
-import FindPC from "./findPC";
+import FindMobile from "./FindMobile";
+import FindPC from "./FindPC";
 
-export default function FindPage() {
+export default function FindIdPasswordPage() {
   return <ResponsiveRenderer mobile={<FindMobile />} pc={<FindPC />} />;
 }
