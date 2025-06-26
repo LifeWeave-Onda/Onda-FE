@@ -1,14 +1,11 @@
 import { css } from "@emotion/react";
+import { InputHTMLAttributes } from "react";
 
-interface InputProps {
-  type: string;
-  placeholder: string;
-}
+// input 요소의 모든 기본 속성을 포함하는 props 정의
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {}
 
 export default function Input(props: InputProps) {
-  return (
-    <input type={props.type} placeholder={props.placeholder} css={inputStyle} />
-  );
+  return <input css={inputStyle} {...props} />;
 }
 
 const inputStyle = css`
