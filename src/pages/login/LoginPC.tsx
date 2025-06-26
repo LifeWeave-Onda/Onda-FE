@@ -2,13 +2,13 @@ import { css } from "@emotion/react";
 import { Link } from "react-router-dom";
 
 import MainLogo from "@/assets/shared/main-logo.png";
-import Button from "@/components/ui/button";
-import Input from "@/components/ui/input";
+import Button from "@/components/ui/Button";
+import Input from "@/components/ui/Input";
 
 const FIND_LIST = [
   {
     name: "아이디/비밀번호 찾기",
-    link: "/find",
+    link: "/find-id-password",
   },
   { name: "회원가입", link: " " },
 ];

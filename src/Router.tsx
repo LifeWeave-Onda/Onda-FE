@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import LandingPage from "@/pages/landing";
 
-import FindPage from "./pages/find-id-password";
+import FindIdPasswordPage from "./pages/find-id-password";
 import LoginPage from "./pages/login";
 
 export default function Router() {
@@ -11,7 +11,7 @@ export default function Router() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/find" element={<FindPage />} />
+        <Route path="/find-id-password" element={<FindIdPasswordPage />} />
       </Routes>
     </BrowserRouter>
   );
