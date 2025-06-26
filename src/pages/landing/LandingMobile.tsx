@@ -22,7 +22,7 @@ export default function LandingMobile() {
 
       <div css={bottomContentBoxStyle}>
         <div className="content-container">
-          <Link to="" className="link">
+          <Link to="/breeder-list" className="link">
             <span>온다 브리더</span>
             <img src={rightArrowIcon} alt="right-arrow" />
           </Link>

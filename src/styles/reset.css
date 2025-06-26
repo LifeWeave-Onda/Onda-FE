@@ -133,6 +133,7 @@ button {
   cursor: pointer;
   border-radius: 0;
   color: inherit;
+  font: inherit;
 }
 
 input {
