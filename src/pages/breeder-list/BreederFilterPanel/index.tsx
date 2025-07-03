@@ -61,7 +61,7 @@ export default function BreederFilterPanel() {
 
       <div style={{ position: "relative" }}>
         <div css={breederFilterContainerStyle}>
-          <BreederFilter.Root initialWidth={90}>
+          <BreederFilter.Root initialWidth={90} openWidth={212}>
             <BreederFilter.Trigger label="정렬" />
             <BreederFilter.List>
               <div css={listWrapperStyle}>
@@ -79,7 +79,7 @@ export default function BreederFilterPanel() {
             </BreederFilter.List>
           </BreederFilter.Root>
 
-          <BreederFilter.Root initialWidth={90}>
+          <BreederFilter.Root initialWidth={90} openWidth={212}>
             <BreederFilter.Trigger label="품종" />
             <BreederFilter.List>
               <div css={breedListWrapperStyle}>
@@ -107,7 +107,7 @@ export default function BreederFilterPanel() {
             </BreederFilter.List>
           </BreederFilter.Root>
 
-          <BreederFilter.Root initialWidth={90}>
+          <BreederFilter.Root initialWidth={90} openWidth={212}>
             <BreederFilter.Trigger label="지역" />
             <BreederFilter.List>
               <div css={listWrapperStyle}>
@@ -125,7 +125,7 @@ export default function BreederFilterPanel() {
             </BreederFilter.List>
           </BreederFilter.Root>
 
-          <BreederFilter.Root initialWidth={104}>
+          <BreederFilter.Root initialWidth={104} openWidth={212}>
             <BreederFilter.Trigger label="입양처" />
             <BreederFilter.List>
               <div css={listWrapperStyle}>
