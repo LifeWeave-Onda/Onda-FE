@@ -60,11 +60,11 @@ const gridStyle = css`
   margin: 120px 0 20%;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 10px;
 
   .row {
     display: flex;
-    gap: 16px;
+    gap: 10px;
 
     .cell {
       flex: 1;

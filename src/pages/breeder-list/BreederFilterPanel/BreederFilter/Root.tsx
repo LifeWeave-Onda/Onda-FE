@@ -23,9 +23,11 @@ export function useBreederFilterContext() {
 export default function Root({
   children,
   initialWidth,
+  openWidth,
 }: {
   children: ReactNode;
   initialWidth: number;
+  openWidth: number;
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const filterRef = useRef<HTMLDivElement>(null);
@@ -38,7 +40,7 @@ export default function Root({
     <BreederFilterContext.Provider value={{ isOpen, toggle }}>
       <div
         ref={filterRef}
-        css={breederFilterWrapperStyle({ isOpen, initialWidth })}
+        css={breederFilterWrapperStyle({ isOpen, initialWidth, openWidth })}
       >
         {children}
       </div>
@@ -49,11 +51,13 @@ export default function Root({
 const breederFilterWrapperStyle = ({
   isOpen,
   initialWidth,
+  openWidth,
 }: {
   isOpen: boolean;
   initialWidth: number;
+  openWidth: number;
 }) => css`
-  width: ${!isOpen ? `${initialWidth}px` : "212px"};
+  width: ${!isOpen ? `${initialWidth}px` : `${openWidth}px`};
   background-color: ${!isOpen ? "#F0F0F0" : "white"};
   padding: ${!isOpen ? "12px 20px" : "20px 24px"};
   border-radius: ${!isOpen ? "30px" : "10px"};
