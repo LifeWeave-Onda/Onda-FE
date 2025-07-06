@@ -1,4 +1,5 @@
 import { css } from "@emotion/react";
+import { Link } from "react-router-dom";
 
 import MobileNavbar from "@/components/navbar/MobileNavbar";
 
@@ -79,11 +80,11 @@ export default function BreederListMobile() {
 
         <div css={gridStyle}>
           {Array.from({ length: 20 }).map((_, idx) => (
-            <div key={idx} className="cell">
+            <Link to={`/breeder-detail/${idx}`} key={idx} className="cell">
               <div className="img" />
               <span className="name">캣토피아</span>
               <span className="breed">노르웨이숲</span>
-            </div>
+            </Link>
           ))}
         </div>
       </main>

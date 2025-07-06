@@ -1,4 +1,5 @@
 import { css } from "@emotion/react";
+import { Link } from "react-router-dom";
 
 import BreederFilterPanel from "./BreederFilterPanel";
 
@@ -20,10 +21,15 @@ export default function ListGrid() {
           <div key={rowIdx} className="row">
             {Array.from({ length: 4 }).map((_, colIdx) => {
               const cellNumber = rowIdx * 4 + colIdx + 1;
+
               return (
-                <div key={cellNumber} className="cell">
+                <Link
+                  to={`/breeder-detail/${cellNumber}`}
+                  key={cellNumber}
+                  className="cell"
+                >
                   Cell {cellNumber}
-                </div>
+                </Link>
               );
             })}
           </div>

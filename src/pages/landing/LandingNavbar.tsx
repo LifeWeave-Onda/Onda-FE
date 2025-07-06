@@ -8,8 +8,7 @@ import { zIndex } from "@/styles/zIndex";
 const MENU_LIST = [
   { name: "회사소개", link: "" },
   { name: "브리더입양", link: "/breeder-list" },
-  { name: "보호소입양", link: "" },
-  { name: "온다브리더", link: "" },
+  { name: "로그인", link: "/login" },
 ];
 
 export default function LandingNavbar({

@@ -1,18 +1,21 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+import BreederAnimal from "@/pages/breeder-detail/BreederAnimal";
+import BreederDetailLayout from "@/pages/breeder-detail/BreederDetailLayout";
+import BreederInfo from "@/pages/breeder-detail/BreederInfo";
 import BreederListPage from "@/pages/breeder-list";
+import FindIdPasswordPage from "@/pages/find-id-password";
+import FindIdResult from "@/pages/find-id-password/result/FindIdResult";
+import FindPasswordResult from "@/pages/find-id-password/result/FindPasswordResult";
 import LandingPage from "@/pages/landing";
-
-import FindIdPasswordPage from "./pages/find-id-password";
-import FindIdResult from "./pages/find-id-password/result/FindIdResult";
-import FindPasswordResult from "./pages/find-id-password/result/FindPasswordResult";
-import LoginPage from "./pages/login";
+import LoginPage from "@/pages/login";
 
 export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        {/* Auth */}
         <Route path="/login" element={<LoginPage />} />
         <Route path="/find-id-password" element={<FindIdPasswordPage />} />
         <Route
@@ -23,7 +26,13 @@ export default function Router() {
           path="/find-id-password/find-password-result"
           element={<FindPasswordResult />}
         />
+        {/* Main */}
         <Route path="/breeder-list" element={<BreederListPage />} />
+        <Route path="/breeder-detail/:id" element={<BreederDetailLayout />}>
+          <Route index element={<BreederInfo />} />
+          <Route path="info" element={<BreederInfo />} />
+          <Route path="animal" element={<BreederAnimal />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
