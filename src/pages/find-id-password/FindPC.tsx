@@ -1,12 +1,14 @@
 import { css } from "@emotion/react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import FindIdForm from "./FindIdForm";
 import FindPasswordForm from "./FindPasswordForm";
 
 const FindPC = () => {
-  const [selectTab, setSelectTab] = useState<"id" | "pwd">("id");
+  const location = useLocation();
+  const initialTab = location.state?.selectTab || "id";
+  const [selectTab, setSelectTab] = useState<"id" | "pwd">(initialTab);
 
   return (
     <div css={findWrapperStyle}>
