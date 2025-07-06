@@ -1,14 +1,16 @@
 import { css } from "@emotion/react";
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-import FindIdForm from "./FindIdForm";
-import FindPasswordForm from "./FindPasswordForm";
+import Button from "@/components/ui/Button";
 
-const FindPC = () => {
-  const location = useLocation();
-  const initialTab = location.state?.selectTab || "id";
-  const [selectTab, setSelectTab] = useState<"id" | "pwd">(initialTab);
+export default function FindIdResult() {
+  const [selectTab, setSelectTab] = useState<"id" | "pwd">("id");
+  const navigate = useNavigate();
+
+  const goToLoginPage = () => {
+    navigate("/login");
+  };
 
   return (
     <div css={findWrapperStyle}>
@@ -18,28 +20,37 @@ const FindPC = () => {
       <div>
         <button
           css={tabButton(selectTab === "id")}
-          onClick={() => setSelectTab("id")}
+          onClick={() => navigate("/find-id-password")}
         >
           아이디 찾기
         </button>
         <button
           css={tabButton(selectTab === "pwd")}
-          onClick={() => setSelectTab("pwd")}
+          onClick={() =>
+            navigate("/find-id-password", { state: { selectTab: "pwd" } })
+          }
         >
           비밀번호 찾기
         </button>
       </div>
       <div>
-        {selectTab === "id" && <FindIdForm />}
-        {selectTab === "pwd" && <FindPasswordForm />}
+        <div css={findIdResultWrapper}>
+          <h3>회원정보와 일치하는 아이디입니다.</h3>
+          <div css={infoWrapper}>
+            <p>아이디 : abcde**</p>
+            <p>가입일 : 2025.06.05</p>
+          </div>
+          <Button onClick={goToLoginPage}>로그인하기</Button>
+        </div>
       </div>
       <div css={findItemStyle}>
-        {selectTab === "id" && (
-          <button onClick={() => setSelectTab("pwd")}>비밀번호 찾기</button>
-        )}
-        {selectTab === "pwd" && (
-          <button onClick={() => setSelectTab("id")}>아이디 찾기</button>
-        )}
+        <button
+          onClick={() =>
+            navigate("/find-id-password", { state: { selectTab: "pwd" } })
+          }
+        >
+          비밀번호 찾기
+        </button>
         <span>|</span>
         <Link to="/sing-up">회원가입</Link>
       </div>
@@ -48,7 +59,7 @@ const FindPC = () => {
       </div>
     </div>
   );
-};
+}
 
 const findWrapperStyle = css`
   width: 410px;
@@ -80,6 +91,36 @@ const tabButton = (isActive: boolean) => css`
   background-color: ${isActive ? "#FFFFFF" : "#F7F7F7"};
 `;
 
+const findIdResultWrapper = css`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  > h3 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 32px;
+  }
+`;
+
+const infoWrapper = css`
+  width: 410px;
+  height: 92px;
+  padding: 24px 27px 24px 16px;
+  border: 1px solid #d9d9d9;
+  margin-bottom: 32px;
+  margin-top: 16px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  > p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 100%;
+  }
+`;
+
 const ondaRights = css`
   font-size: 10px;
   font-weight: 500;
@@ -106,5 +147,3 @@ const findItemStyle = css`
     color: #404040;
   }
 `;
-
-export default FindPC;
