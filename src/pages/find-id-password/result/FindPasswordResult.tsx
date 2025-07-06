@@ -8,7 +8,7 @@ export default function FindPasswordResult() {
   const [selectTab, setSelectTab] = useState<"id" | "pwd">("pwd");
   const navigate = useNavigate();
 
-  const loginButton = () => {
+  const goToLoginPage = () => {
     navigate("/login");
   };
 
@@ -47,7 +47,7 @@ export default function FindPasswordResult() {
             <p>가입일 : 2025.06.05</p>
             <p>전화번호 : 010-1234-56**</p>
           </div>
-          <Button onClick={loginButton}>로그인하기</Button>
+          <Button onClick={goToLoginPage}>로그인하기</Button>
         </div>
       </div>
       <div css={findItemStyle}>

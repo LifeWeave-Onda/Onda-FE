@@ -8,7 +8,7 @@ export default function FindIdResult() {
   const [selectTab, setSelectTab] = useState<"id" | "pwd">("id");
   const navigate = useNavigate();
 
-  const loginButton = () => {
+  const goToLoginPage = () => {
     navigate("/login");
   };
 
@@ -40,7 +40,7 @@ export default function FindIdResult() {
             <p>아이디 : abcde**</p>
             <p>가입일 : 2025.06.05</p>
           </div>
-          <Button onClick={loginButton}>로그인하기</Button>
+          <Button onClick={goToLoginPage}>로그인하기</Button>
         </div>
       </div>
       <div css={findItemStyle}>
