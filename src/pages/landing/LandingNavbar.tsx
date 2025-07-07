@@ -2,7 +2,7 @@ import { css } from "@emotion/react";
 import { Link } from "react-router-dom";
 
 import mainLogo from "@/assets/shared/main-logo.png";
-import { breakpoints, layoutPaddingX } from "@/styles/layout";
+import { breakpoints, responsiveHorizontalPadding } from "@/styles/layout";
 import { zIndex } from "@/styles/zIndex";
 
 const MENU_LIST = [
@@ -35,8 +35,10 @@ export default function LandingNavbar({
 }
 
 const navStyle = (isTransparent: boolean) => css`
+  ${responsiveHorizontalPadding};
+  padding-top: 16px;
+  padding-bottom: 16px;
   background-color: ${isTransparent ? "transparent" : "white"};
-  padding: 16px ${layoutPaddingX.md};
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -52,19 +54,6 @@ const navStyle = (isTransparent: boolean) => css`
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
-
-  @media screen and (min-width: ${breakpoints.lg}) {
-    padding-left: ${layoutPaddingX.lg};
-    padding-right: ${layoutPaddingX.lg};
-  }
-  @media screen and (min-width: ${breakpoints.xl}) {
-    padding-left: ${layoutPaddingX.xl};
-    padding-right: ${layoutPaddingX.xl};
-  }
-  @media screen and (min-width: ${breakpoints["2xl"]}) {
-    padding-left: ${layoutPaddingX["2xl"]};
-    padding-right: ${layoutPaddingX["2xl"]};
-  }
 `;
 
 const titleStyle = css`
