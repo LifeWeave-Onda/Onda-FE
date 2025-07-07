@@ -1,3 +1,3 @@
 export default function BreederAnimal() {
-  return <></>;
+  return <>분양 중인 동물</>;
 }

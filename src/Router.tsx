@@ -1,4 +1,11 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
+import {
+  BrowserRouter,
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
 
 import BreederAnimal from "@/pages/breeder-detail/BreederAnimal";
 import BreederDetailLayout from "@/pages/breeder-detail/BreederDetailLayout";
@@ -13,6 +20,8 @@ import LoginPage from "@/pages/login";
 export default function Router() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
+
       <Routes>
         <Route path="/" element={<LandingPage />} />
         {/* Auth */}
@@ -29,11 +38,21 @@ export default function Router() {
         {/* Main */}
         <Route path="/breeder-list" element={<BreederListPage />} />
         <Route path="/breeder-detail/:id" element={<BreederDetailLayout />}>
-          <Route index element={<BreederInfo />} />
+          <Route index element={<Navigate to="info" replace />} />
           <Route path="info" element={<BreederInfo />} />
           <Route path="animal" element={<BreederAnimal />} />
         </Route>
       </Routes>
     </BrowserRouter>
   );
+}
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
 }
