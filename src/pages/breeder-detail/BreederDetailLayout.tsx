@@ -1,11 +1,13 @@
 import { css } from "@emotion/react";
+import { IconButton, Modal } from "@mui/material";
 import { useState } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 
-import addressIcon from "@/assets/breeder-detail/address.svg";
-import emailIcon from "@/assets/breeder-detail/email.svg";
+import AddressIcon from "@/assets/breeder-detail/address.svg?react";
+import EmailIcon from "@/assets/breeder-detail/email.svg?react";
 import HeartIcon from "@/assets/breeder-detail/heart.svg?react";
-import phoneIcon from "@/assets/breeder-detail/phone.svg";
+import PhoneIcon from "@/assets/breeder-detail/phone.svg?react";
+import ShowDetailIcon from "@/assets/breeder-detail/show-detail.svg?react";
 import animalProfileImg from "@/assets/breeder-detail/temp/animal-profile.png";
 import breederProfileImg from "@/assets/breeder-detail/temp/breeder-profile.png";
 import MainLayout from "@/components/layout/MainLayout";
@@ -45,6 +47,7 @@ function LeftSidebar() {
   const isAnimalPage = location.pathname.endsWith("/animal");
 
   const [isLiked, setIsLiked] = useState(false);
+  const [isShowDetailModalOpen, setIsShowDetailModalOpen] = useState(false);
 
   return (
     <div css={leftSidebarStyle}>
@@ -71,18 +74,48 @@ function LeftSidebar() {
         <div className="contact-title">연락처 정보</div>
         <div className="contact-flexbox">
           <div className="row">
-            <img src={addressIcon} alt="address" width={20} height={20} />
+            <AddressIcon width={20} height={20} />
             <span>{CONTACT_INFO_DATA.address}</span>
           </div>
           <div className="row">
-            <img src={phoneIcon} alt="phone" width={20} height={20} />
+            <PhoneIcon width={20} height={20} />
             <span>{CONTACT_INFO_DATA.phone}</span>
           </div>
           <div className="row">
-            <img src={emailIcon} alt="email" width={20} height={20} />
+            <EmailIcon width={20} height={20} />
             <span>{CONTACT_INFO_DATA.email}</span>
           </div>
         </div>
+        <IconButton
+          className="expansion-btn"
+          onClick={() => setIsShowDetailModalOpen(true)}
+        >
+          <ShowDetailIcon />
+        </IconButton>
+        {isShowDetailModalOpen && (
+          <Modal
+            open={isShowDetailModalOpen}
+            onClose={() => setIsShowDetailModalOpen(false)}
+          >
+            <div css={modalContentStyle}>
+              <div className="contact-title">연락처 정보</div>
+              <div className="contact-flexbox">
+                <div className="row">
+                  <AddressIcon width={20} height={20} />
+                  <span>{CONTACT_INFO_DATA.address}</span>
+                </div>
+                <div className="row">
+                  <PhoneIcon width={20} height={20} />
+                  <span>{CONTACT_INFO_DATA.phone}</span>
+                </div>
+                <div className="row">
+                  <EmailIcon width={20} height={20} />
+                  <span>{CONTACT_INFO_DATA.email}</span>
+                </div>
+              </div>
+            </div>
+          </Modal>
+        )}
       </div>
     </div>
   );
@@ -141,6 +174,7 @@ const contactInfoStyle = css`
   border-radius: 10px;
   margin-top: 30px;
   padding: 12px 20px;
+  position: relative;
 
   .contact-title {
     font-weight: 700;
@@ -150,6 +184,44 @@ const contactInfoStyle = css`
 
   .contact-flexbox {
     margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+
+  .expansion-btn {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+  }
+`;
+
+const modalContentStyle = css`
+  padding: 20px;
+  background-color: white;
+  border: 1px solid #d9d9d9;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 500px;
+
+  .contact-title {
+    font-weight: 700;
+    font-size: 20px;
+    color: #222222;
+  }
+
+  .contact-flexbox {
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     gap: 12px;
