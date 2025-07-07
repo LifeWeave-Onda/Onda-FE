@@ -134,6 +134,7 @@ const layoutStyle = css`
 
   .right-content {
     flex: 1.3;
+    min-width: 0;
   }
 `;
 
