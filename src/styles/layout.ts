@@ -1,3 +1,5 @@
+import { css } from "@emotion/react";
+
 export const breakpoints = {
   xs: "480px",
   sm: "640px",
@@ -13,3 +15,21 @@ export const layoutPaddingX = {
   xl: "120px",
   "2xl": "315px",
 };
+
+export const responsiveHorizontalPadding = css`
+  padding-left: ${layoutPaddingX.md};
+  padding-right: ${layoutPaddingX.md};
+
+  @media screen and (min-width: ${breakpoints.lg}) {
+    padding-left: ${layoutPaddingX.lg};
+    padding-right: ${layoutPaddingX.lg};
+  }
+  @media screen and (min-width: ${breakpoints.xl}) {
+    padding-left: ${layoutPaddingX.xl};
+    padding-right: ${layoutPaddingX.xl};
+  }
+  @media screen and (min-width: ${breakpoints["2xl"]}) {
+    padding-left: ${layoutPaddingX["2xl"]};
+    padding-right: ${layoutPaddingX["2xl"]};
+  }
+`;

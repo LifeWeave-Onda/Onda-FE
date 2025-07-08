@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import MainLayout from "@/components/layout/MainLayout";
 import Pagination from "@/components/pagination";
-import { breakpoints, layoutPaddingX } from "@/styles/layout";
+import { responsiveHorizontalPadding } from "@/styles/layout";
 
 import AdCarousel from "./AdCarousel";
 import ListGrid from "./ListGrid";
@@ -13,7 +13,7 @@ export default function BreederListPC() {
 
   return (
     <MainLayout>
-      <div css={pageContentStyle}>
+      <div css={responsiveHorizontalPadding}>
         <AdCarousel />
         <ListGrid />
         <div css={paginationWrapper}>
@@ -29,24 +29,6 @@ export default function BreederListPC() {
     </MainLayout>
   );
 }
-
-const pageContentStyle = css`
-  padding-left: ${layoutPaddingX.md};
-  padding-right: ${layoutPaddingX.md};
-
-  @media screen and (min-width: ${breakpoints.lg}) {
-    padding-left: ${layoutPaddingX.lg};
-    padding-right: ${layoutPaddingX.lg};
-  }
-  @media screen and (min-width: ${breakpoints.xl}) {
-    padding-left: ${layoutPaddingX.xl};
-    padding-right: ${layoutPaddingX.xl};
-  }
-  @media screen and (min-width: ${breakpoints["2xl"]}) {
-    padding-left: ${layoutPaddingX["2xl"]};
-    padding-right: ${layoutPaddingX["2xl"]};
-  }
-`;
 
 const paginationWrapper = css`
   display: flex;

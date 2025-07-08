@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 
-import { breakpoints, layoutPaddingX } from "@/styles/layout";
+import { breakpoints, responsiveHorizontalPadding } from "@/styles/layout";
 
 export default function LandingSection4() {
   return (
@@ -18,20 +18,9 @@ export default function LandingSection4() {
 }
 
 const sectionStyle = css`
-  padding: 96px ${layoutPaddingX.md} 176px;
-
-  @media screen and (min-width: ${breakpoints.lg}) {
-    padding-left: ${layoutPaddingX.lg};
-    padding-right: ${layoutPaddingX.lg};
-  }
-  @media screen and (min-width: ${breakpoints.xl}) {
-    padding-left: ${layoutPaddingX.xl};
-    padding-right: ${layoutPaddingX.xl};
-  }
-  @media screen and (min-width: ${breakpoints["2xl"]}) {
-    padding-left: ${layoutPaddingX["2xl"]};
-    padding-right: ${layoutPaddingX["2xl"]};
-  }
+  ${responsiveHorizontalPadding};
+  padding-top: 96px;
+  padding-bottom: 176px;
 `;
 
 const titleStyle = css`

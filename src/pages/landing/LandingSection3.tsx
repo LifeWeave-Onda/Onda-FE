@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 import hope1Img from "@/assets/landing/hope1.png";
 import hope2Img from "@/assets/landing/hope2.png";
 import hope3Img from "@/assets/landing/hope3.png";
-import { breakpoints, layoutPaddingX } from "@/styles/layout";
+import { breakpoints, responsiveHorizontalPadding } from "@/styles/layout";
 
 export default function LandingSection3() {
   return (
@@ -41,20 +41,9 @@ export default function LandingSection3() {
 }
 
 const sectionStyle = css`
-  padding: 120px ${layoutPaddingX.md} 96px;
-
-  @media screen and (min-width: ${breakpoints.lg}) {
-    padding-left: ${layoutPaddingX.lg};
-    padding-right: ${layoutPaddingX.lg};
-  }
-  @media screen and (min-width: ${breakpoints.xl}) {
-    padding-left: ${layoutPaddingX.xl};
-    padding-right: ${layoutPaddingX.xl};
-  }
-  @media screen and (min-width: ${breakpoints["2xl"]}) {
-    padding-left: ${layoutPaddingX["2xl"]};
-    padding-right: ${layoutPaddingX["2xl"]};
-  }
+  ${responsiveHorizontalPadding}
+  padding-top:120px;
+  padding-bottom: 96px;
 `;
 
 const titleStyle = css`
