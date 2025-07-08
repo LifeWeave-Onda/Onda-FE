@@ -1,5 +1,7 @@
 /// <reference types="vite/client" />
 
+/// <reference types="vite-plugin-svgr/client" />
+
 // swiper css
 declare module "swiper/css";
 declare module "swiper/css/navigation";

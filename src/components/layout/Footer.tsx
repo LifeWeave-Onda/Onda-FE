@@ -2,7 +2,7 @@ import { css } from "@emotion/react";
 import { Link } from "react-router-dom";
 
 import instagramLogo from "@/assets/shared/instagram-logo.png";
-import { breakpoints, layoutPaddingX } from "@/styles/layout";
+import { breakpoints, responsiveHorizontalPadding } from "@/styles/layout";
 
 const MENU_LIST = [
   { name: "회사소개", link: "" },
@@ -63,23 +63,12 @@ export default function Footer() {
 }
 
 const menuListStyle = css`
-  padding: 16px ${layoutPaddingX.md};
+  ${responsiveHorizontalPadding}
+  padding-top: 16px;
+  padding-bottom: 16px;
   border-top: 0.5px solid #9a9a9a;
   border-bottom: 0.5px solid #9a9a9a;
   display: flex;
-
-  @media screen and (min-width: ${breakpoints.lg}) {
-    padding-left: ${layoutPaddingX.lg};
-    padding-right: ${layoutPaddingX.lg};
-  }
-  @media screen and (min-width: ${breakpoints.xl}) {
-    padding-left: ${layoutPaddingX.xl};
-    padding-right: ${layoutPaddingX.xl};
-  }
-  @media screen and (min-width: ${breakpoints["2xl"]}) {
-    padding-left: ${layoutPaddingX["2xl"]};
-    padding-right: ${layoutPaddingX["2xl"]};
-  }
 `;
 
 const menuStyle = css`
@@ -92,21 +81,10 @@ const menuStyle = css`
 `;
 
 const infoContainerStyle = css`
-  padding: 22px ${layoutPaddingX.md} 54px;
+  ${responsiveHorizontalPadding}
+  padding-top:22px;
+  padding-bottom: 54px;
   color: #666666;
-
-  @media screen and (min-width: ${breakpoints.lg}) {
-    padding-left: ${layoutPaddingX.lg};
-    padding-right: ${layoutPaddingX.lg};
-  }
-  @media screen and (min-width: ${breakpoints.xl}) {
-    padding-left: ${layoutPaddingX.xl};
-    padding-right: ${layoutPaddingX.xl};
-  }
-  @media screen and (min-width: ${breakpoints["2xl"]}) {
-    padding-left: ${layoutPaddingX["2xl"]};
-    padding-right: ${layoutPaddingX["2xl"]};
-  }
 
   .first-row {
     font-size: 14px;

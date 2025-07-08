@@ -5,7 +5,7 @@ import heartIcon from "@/assets/shared/heart.svg";
 import mainLogo from "@/assets/shared/main-logo.png";
 import searchIcon from "@/assets/shared/search.svg";
 import userIcon from "@/assets/shared/user.svg";
-import { breakpoints, layoutPaddingX } from "@/styles/layout";
+import { layoutPaddingX, responsiveHorizontalPadding } from "@/styles/layout";
 import { zIndex } from "@/styles/zIndex";
 
 export default function Navbar() {
@@ -25,6 +25,9 @@ export default function Navbar() {
 }
 
 const navStyle = css`
+  ${responsiveHorizontalPadding};
+  padding-top: 16px;
+  padding-bottom: 16px;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
@@ -34,19 +37,6 @@ const navStyle = css`
   position: sticky;
   top: 0;
   z-index: ${zIndex.navbar};
-
-  @media screen and (min-width: ${breakpoints.lg}) {
-    padding-left: ${layoutPaddingX.lg};
-    padding-right: ${layoutPaddingX.lg};
-  }
-  @media screen and (min-width: ${breakpoints.xl}) {
-    padding-left: ${layoutPaddingX.xl};
-    padding-right: ${layoutPaddingX.xl};
-  }
-  @media screen and (min-width: ${breakpoints["2xl"]}) {
-    padding-left: ${layoutPaddingX["2xl"]};
-    padding-right: ${layoutPaddingX["2xl"]};
-  }
 
   .right {
     justify-self: end;
