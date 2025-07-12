@@ -39,7 +39,7 @@ export default function ImageSwiper({ images, cssProp }: Props) {
         spaceBetween={16}
         slidesPerView={1}
         navigation
-        css={[cssProp, swiperStyle]}
+        css={[swiperStyle, cssProp]}
         onSlideChange={(swiper) => setCurrentSlide(swiper.activeIndex + 1)}
       >
         {images.map((src, idx) => (
@@ -49,11 +49,13 @@ export default function ImageSwiper({ images, cssProp }: Props) {
         ))}
       </Swiper>
 
-      <div css={dotIndicatorStyle}>
-        {images.map((_, idx) => (
-          <div key={idx} css={dotStyle(idx + 1 === currentSlide)} />
-        ))}
-      </div>
+      {images.length >= 2 && (
+        <div css={dotIndicatorStyle}>
+          {images.map((_, idx) => (
+            <div key={idx} css={dotStyle(idx + 1 === currentSlide)} />
+          ))}
+        </div>
+      )}
     </>
   );
 }
@@ -86,7 +88,7 @@ const swiperStyle = css`
 const imageStyle = css`
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 `;
 
 const dotIndicatorStyle = css`
