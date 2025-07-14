@@ -35,7 +35,6 @@ export default function ProgressBar({
           strokeColor={strokeColor}
           style={{
             height: "10px",
-            width: "500px",
             borderRadius: "10px",
             borderTopRightRadius: 0,
             transform: rightPercent > 50 ? "rotate(180deg)" : "",
@@ -53,7 +52,7 @@ export default function ProgressBar({
 }
 
 const chartContainerStyle = css`
-  width: 642px;
+  width: 100%;
   height: 107px;
   border-bottom: 1px solid rgba(217, 217, 217, 1);
   margin-top: 21px;
@@ -72,6 +71,7 @@ const chartDetailStyle = css`
   justify-content: space-between;
   align-items: center;
   height: 47px;
+  gap: 22px;
 `;
 
 const traitPercentStyle = css`

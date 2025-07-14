@@ -14,7 +14,6 @@ import ParentDogImg from "@/assets/breeder-detail/temp/parent-dog.png";
 import pedigreeCerfiticateImg from "@/assets/breeder-detail/temp/pedigree-certificate.png";
 import ProgressBar from "@/components/progress-bar/ProgressBar";
 import ImageSwiper from "@/components/swiper/ImageSwiper";
-import InfoCard from "@/components/ui/InfoCard";
 
 const BREEDER_ANIMAL_INFO_DATA = {
   animalBasicInfo: [
@@ -147,7 +146,7 @@ const BREEDER_ANIMAL_INFO_DATA = {
 export default function BreederAnimal() {
   return (
     <div css={breederAnimalPage}>
-      <InfoCard>
+      <div css={infoCardStyle}>
         <h1 css={infoCardTitle}>기본 정보</h1>
         <div css={basicInfoDetailCard}>
           {BREEDER_ANIMAL_INFO_DATA.animalBasicInfo.map((item) => (
@@ -157,14 +156,14 @@ export default function BreederAnimal() {
             </div>
           ))}
         </div>
-      </InfoCard>
-      <InfoCard>
+      </div>
+      <div css={infoCardStyle}>
         <h1 css={infoCardTitle}>소개</h1>
         <p css={animalDescription}>
           {BREEDER_ANIMAL_INFO_DATA.animalDescription}
         </p>
-      </InfoCard>
-      <InfoCard>
+      </div>
+      <div css={infoCardStyle}>
         <h1 css={infoCardTitle}>PETI(반려동물 성격 유형)</h1>
         <div css={PETIBarStyle}>
           <ProgressBar
@@ -210,8 +209,8 @@ export default function BreederAnimal() {
             {BREEDER_ANIMAL_INFO_DATA.PETI.description}
           </p>
         </div>
-      </InfoCard>
-      <InfoCard>
+      </div>
+      <div css={infoCardStyle}>
         <h1 css={infoCardTitle}>털빠짐정도</h1>
         <div css={hairLossBarStyle}>
           <Line
@@ -220,14 +219,14 @@ export default function BreederAnimal() {
             strokeColor="rgba(255,90,88,1)"
             style={{
               height: "14px",
-              width: "665px",
+              width: "100%",
               borderRadius: "10px",
               borderTopRightRadius: 0,
             }}
           />
         </div>
-      </InfoCard>
-      <InfoCard>
+      </div>
+      <div css={infoCardStyle}>
         <h1 css={infoCardTitle}>건강상태</h1>
         <div css={healthStatusSummation}>
           <div css={healthStatusSummationDetail}>
@@ -263,8 +262,8 @@ export default function BreederAnimal() {
             </div>
           ))}
         </div>
-      </InfoCard>
-      <InfoCard>
+      </div>
+      <div css={infoCardStyle}>
         <div css={titleAndSeeMoreBtnStyle}>
           <h1 css={infoCardTitle}>양육환경</h1>
           <button css={seeMoreBtn}>자세히보기→</button>
@@ -273,8 +272,8 @@ export default function BreederAnimal() {
           images={[BreedingEnvironmentImg, ParentDogImg]}
           cssProp={breedingEnvironmentImgStyle}
         />
-      </InfoCard>
-      <InfoCard>
+      </div>
+      <div css={infoCardStyle}>
         <div css={titleAndSeeMoreBtnStyle}>
           <h1 css={infoCardTitle}>부모견</h1>
           <button css={seeMoreBtn}>자세히보기→</button>
@@ -283,8 +282,8 @@ export default function BreederAnimal() {
           images={[ParentDogImg, BreedingEnvironmentImg]}
           cssProp={parentDogImgStyle}
         />
-      </InfoCard>
-      <InfoCard>
+      </div>
+      <div css={infoCardStyle}>
         <div css={titleAndSeeMoreBtnStyle}>
           <h1 css={infoCardTitle}>브리더 정보</h1>
           <button css={seeMoreBtn}>자세히보기→</button>
@@ -309,16 +308,16 @@ export default function BreederAnimal() {
             ))}
           </div>
         </div>
-      </InfoCard>
-      <InfoCard>
+      </div>
+      <div css={infoCardStyle}>
         <h1 css={infoCardTitle}>혈통보증서</h1>
         <img
           src={pedigreeCerfiticateImg}
           alt="pedigree-certificate"
           css={pedigreeCerfiticateImgStyle}
         />
-      </InfoCard>
-      <InfoCard>
+      </div>
+      <div css={infoCardStyle}>
         <h1 css={infoCardTitle}>분양과정안내</h1>
         <div css={adoptionProcessGuideDiv}>
           {BREEDER_ANIMAL_INFO_DATA.adoptoinProcessGuideInfo.map((item) => (
@@ -331,16 +330,25 @@ export default function BreederAnimal() {
             </div>
           ))}
         </div>
-      </InfoCard>
+      </div>
     </div>
   );
 }
+
+const infoCardStyle = css`
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.25);
+`;
 
 const breederAnimalPage = css`
   display: flex;
   flex-direction: column;
   gap: 40px;
 `;
+
 const infoCardTitle = css`
   font-size: 20px;
   font-weight: 700;
@@ -362,7 +370,6 @@ const basicInfoDetailCard = css`
   margin-top: 16px;
 `;
 const basicInfoDetailCardStyle = css`
-  width: 324px;
   height: 77px;
   border-radius: 10px;
   border: 1px solid rgba(217, 217, 217, 1);
@@ -462,7 +469,6 @@ const resultDescription = css`
 const healthStatusSummation = css`
   display: flex;
   flex-direction: column;
-  width: 664px;
   height: 68px;
   border-radius: 10px;
   border: 1px solid rgba(195, 248, 214, 1);
@@ -501,7 +507,6 @@ const healthStatusDetailCard = css`
   display: flex;
   flex-direction: column;
   border: 1px solid rgba(217, 217, 217, 1);
-  width: 324px;
   height: 184px;
   border-radius: 10px;
   padding: 20px 28.5px;
@@ -537,7 +542,7 @@ const healthStatusCardField = css`
 `;
 const pedigreeCerfiticateImgStyle = css`
   margin-top: 14px;
-  width: 660px;
+  width: 100%;
 `;
 const titleAndSeeMoreBtnStyle = css`
   display: flex;
@@ -563,7 +568,6 @@ const adoptionProcessGuideDiv = css`
   margin-top: 14px;
 `;
 const adoptionProcessGuideCard = css`
-  width: 665px;
   height: 124px;
   padding: 14px 32px;
   border: 1px solid rgba(217, 217, 217, 1);
