@@ -41,7 +41,7 @@ const FindPC = () => {
           <button onClick={() => setSelectTab("id")}>아이디 찾기</button>
         )}
         <span>|</span>
-        <Link to="/sing-up">회원가입</Link>
+        <Link to="/sign-up">회원가입</Link>
       </div>
       <div css={ondaRights}>
         <p>ⓒOnda.All Rights Reserved.</p>

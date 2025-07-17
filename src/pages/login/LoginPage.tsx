@@ -10,7 +10,7 @@ const FIND_LIST = [
     name: "아이디/비밀번호 찾기",
     link: "/find-id-password",
   },
-  { name: "회원가입", link: " " },
+  { name: "회원가입", link: "/sign-up" },
 ];
 
 const SOCIAL_LOGIN_BTN = [
@@ -28,7 +28,7 @@ const SOCIAL_LOGIN_BTN = [
   },
 ];
 
-export default function LoginPC() {
+export default function LoginPage() {
   return (
     <div css={loginStyle}>
       <div css={loginTitle}>

@@ -15,7 +15,8 @@ import FindIdPasswordPage from "@/pages/find-id-password";
 import FindIdResult from "@/pages/find-id-password/result/FindIdResult";
 import FindPasswordResult from "@/pages/find-id-password/result/FindPasswordResult";
 import LandingPage from "@/pages/landing";
-import LoginPage from "@/pages/login";
+import LoginPage from "@/pages/login/LoginPage";
+import SignUpPage from "@/pages/sign-up/SignUpPage";
 
 export default function Router() {
   return (
@@ -35,6 +36,7 @@ export default function Router() {
           path="/find-id-password/find-password-result"
           element={<FindPasswordResult />}
         />
+        <Route path="sign-up" element={<SignUpPage />} />
         {/* Main */}
         <Route path="/breeder-list" element={<BreederListPage />} />
         <Route path="/breeder-detail/:id" element={<BreederDetailLayout />}>
