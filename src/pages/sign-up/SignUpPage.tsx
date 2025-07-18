@@ -1,4 +1,5 @@
 import { css } from "@emotion/react";
+import { useState } from "react";
 
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
@@ -13,7 +14,10 @@ const AGREE_TERMS = [
   { title: "(선택) 마케팅 정보 수신동의", modal: "", id: "agreeTerm5" },
   { title: "(선택) 위치기반서비스 이용약관 동의", modal: "", id: "agreeTerm6" },
 ];
+
 export default function SignUpPage() {
+  const [identityVerification, setIdentityVerification] = useState(false);
+
   return (
     <div css={signUpPageStyle}>
       <h1 css={signUpTitle}>회원가입</h1>
@@ -36,7 +40,51 @@ export default function SignUpPage() {
       </div>
       <div>
         <h2 css={signUpDetailTitle}>본인인증</h2>
-        <button css={identityVerificationBtn}>본인인증하기</button>
+        {identityVerification ? (
+          <div css={identityVerificationInputStyle}>
+            <input
+              type="text"
+              css={nameAndPhoneNumberInputStyle}
+              value="홍길동"
+              disabled
+            />
+            <input
+              type="text"
+              css={nameAndPhoneNumberInputStyle}
+              value="01012345678"
+              disabled
+            />
+            <div css={birthdayAndGenderInputStyle}>
+              <input
+                type="text"
+                css={birthdayInputStyle}
+                value="20010410"
+                disabled
+              />
+              <div css={genderInputStyle}>
+                <div css={genderDetailStyle}>
+                  <input type="radio" name="gender" id="male" />
+                  <label htmlFor="male">
+                    <span />남
+                  </label>
+                </div>
+                <div css={genderDetailStyle}>
+                  <input type="radio" name="gender" id="female" />
+                  <label htmlFor="female">
+                    <span />여
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <button
+            css={identityVerificationBtn}
+            onClick={() => setIdentityVerification(true)}
+          >
+            본인인증하기
+          </button>
+        )}
       </div>
       <div>
         <h2 css={signUpDetailTitle}>약관동의</h2>
@@ -122,12 +170,88 @@ const showPwdBtn = css`
   font-weight: 500;
   text-decoration-line: underline;
 `;
+
 const signUpDetailTitle = css`
   font-size: "16px";
   font-weight: 500;
   margin-bottom: 16px;
 `;
 
+const identityVerificationInputStyle = css`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+`;
+const nameAndPhoneNumberInputStyle = css`
+  width: 100%;
+  background-color: rgba(239, 239, 239, 1);
+  padding: 15px 16px;
+  height: 48px;
+  color: rgba(102, 102, 102, 1);
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+`;
+
+const birthdayAndGenderInputStyle = css`
+  display: flex;
+  margin-bottom: 36px;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+`;
+
+const genderInputStyle = css`
+  display: flex;
+  gap: 10px;
+`;
+
+const genderDetailStyle = css`
+  display: flex;
+  gap: 8px;
+
+  > input {
+    display: none;
+  }
+
+  > label {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: rgba(64, 64, 64, 1);
+    cursor: pointer;
+  }
+
+  > label > span {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 1px solid rgba(217, 217, 217, 1);
+    border-radius: 50%;
+    margin-right: 8px;
+    position: relative;
+  }
+
+  > input:checked + label > span::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: black;
+    border-radius: 50%;
+    left: 20%;
+    top: 20%;
+  }
+`;
+const birthdayInputStyle = css`
+  width: 300px;
+  background-color: rgba(239, 239, 239, 1);
+  padding: 15px 16px;
+  height: 48px;
+  color: rgba(102, 102, 102, 1);
+  border: none;
+  margin-right: 22px;
+`;
 const signUpDetailInputStyle = css`
   display: flex;
   flex-direction: column;
