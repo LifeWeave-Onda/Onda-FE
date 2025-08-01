@@ -18,6 +18,8 @@ import LandingPage from "@/pages/landing";
 import LoginPage from "@/pages/login/LoginPage";
 import SignUpPage from "@/pages/sign-up/SignUpPage";
 
+import SignUpResult from "./pages/sign-up/SignUpResult";
+
 export default function Router() {
   return (
     <BrowserRouter>
@@ -37,6 +39,7 @@ export default function Router() {
           element={<FindPasswordResult />}
         />
         <Route path="sign-up" element={<SignUpPage />} />
+        <Route path="sign-up-result" element={<SignUpResult />} />
         {/* Main */}
         <Route path="/breeder-list" element={<BreederListPage />} />
         <Route path="/breeder-detail/:id" element={<BreederDetailLayout />}>
