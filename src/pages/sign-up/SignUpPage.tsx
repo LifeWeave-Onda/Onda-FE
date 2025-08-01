@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
 import { useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
 import Input from "@/components/ui/Input";
 import { breakpoints } from "@/styles/layout";
@@ -17,6 +18,7 @@ const AGREE_TERMS = [
 
 export default function SignUpPage() {
   const [identityVerification, setIdentityVerification] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div css={signUpPageStyle}>
@@ -140,7 +142,12 @@ export default function SignUpPage() {
       </div>
       {/* Button 컴포넌트에 width가 410px이 걸려 있어 유연하게 사용하기 어렵습니다. */}
       {/* 어떻게 유연하게 사용할 수 있을지, 꼭 추상화가 필요했는지 고민해보시면 좋을 것 같습니다. */}
-      <button css={submitButtonStyle}>가입완료</button>
+      <button
+        css={submitButtonStyle}
+        onClick={() => navigate("/sign-up-result")}
+      >
+        가입완료
+      </button>
       <div css={ondaRights}>
         <p>ⓒOnda.All Rights Reserved.</p>
       </div>
