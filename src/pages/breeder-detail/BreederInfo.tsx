@@ -59,8 +59,7 @@ interface BreederInfoProps {
 
 export default function BreederInfo({ activeTab }: BreederInfoProps) {
   const animalsRef = useRef<HTMLDivElement>(null);
-  const reviewsRef = useRef<HTMLElement>(null);
-
+  const reviewsRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     let target = null;
     if (activeTab === "분양중인동물") target = animalsRef;

@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import { IconButton, Modal } from "@mui/material";
 import { useState } from "react";
-import { Outlet, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import AddressIcon from "@/assets/breeder-detail/address.svg?react";
 import EmailIcon from "@/assets/breeder-detail/email.svg?react";

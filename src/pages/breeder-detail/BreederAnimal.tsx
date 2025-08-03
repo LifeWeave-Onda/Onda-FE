@@ -359,7 +359,7 @@ const infoCardStyle = css`
   padding: 20px;
   border-radius: 10px;
   border: none;
-  box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.24);
 `;
 
 const breederAnimalPage = css`
