@@ -8,8 +8,9 @@ import {
 } from "react-router-dom";
 
 import BreederAnimal from "@/pages/breeder-detail/BreederAnimal";
-import BreederDetailLayout from "@/pages/breeder-detail/BreederDetailLayout";
+// import BreederDetailLayout from "@/pages/breeder-detail/BreederDetailLayout";
 import BreederInfo from "@/pages/breeder-detail/BreederInfo";
+import BreederInfoPage from "@/pages/breeder-detail/BreederInfoPage";
 import BreederListPage from "@/pages/breeder-list";
 import FindIdPasswordPage from "@/pages/find-id-password";
 import FindIdResult from "@/pages/find-id-password/result/FindIdResult";
@@ -42,11 +43,12 @@ export default function Router() {
         <Route path="sign-up-result" element={<SignUpResult />} />
         {/* Main */}
         <Route path="/breeder-list" element={<BreederListPage />} />
-        <Route path="/breeder-detail/:id" element={<BreederDetailLayout />}>
-          <Route index element={<Navigate to="info" replace />} />
-          <Route path="info" element={<BreederInfo />} />
-          <Route path="animal" element={<BreederAnimal />} />
-        </Route>
+        <Route
+          path="/breeder-detail/:id"
+          element={<Navigate to="info" replace />}
+        />
+
+        <Route path="/breeder-detail/:id/*" element={<BreederInfoPage />} />
       </Routes>
     </BrowserRouter>
   );
