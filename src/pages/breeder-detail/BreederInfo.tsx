@@ -1,6 +1,8 @@
 import { css } from "@emotion/react";
 import DOMPurify from "dompurify";
 import { Fragment } from "react";
+import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 import breedAnimal1 from "@/assets/breeder-detail/temp/breed-animal1.png";
 import breedAnimal2 from "@/assets/breeder-detail/temp/breed-animal2.jpg";
@@ -48,8 +50,25 @@ const BREEDER_INFO_DATA = {
   },
   breedingEnvironment: [breedingEnvironmentImg],
 };
+type TabType = "브리더소개" | "분양중인동물" | "입양후기";
 
-export default function BreederInfo() {
+interface BreederInfoProps {
+  activeTab: TabType;
+}
+
+export default function BreederInfo({ activeTab }: BreederInfoProps) {
+  const animalsRef = useRef<HTMLDivElement>(null);
+  const reviewsRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    let target = null;
+    if (activeTab === "분양중인동물") target = animalsRef;
+    if (activeTab === "입양후기") target = reviewsRef;
+
+    if (target?.current) {
+      target.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [activeTab]);
+
   return (
     <div css={breedeerInfoContainerStyle}>
       <div css={boxStyle}>
@@ -112,17 +131,17 @@ export default function BreederInfo() {
           ))}
         </p>
       </div>
-      <div css={boxStyle}>
+      <div css={boxStyle} ref={animalsRef}>
         <h2 css={titleStyle}>분양 동물</h2>
         {BREEDER_INFO_DATA.breedInfo.animals.map((animal) => (
-          <div key={animal.id} css={animalBoxStyle}>
+          <Link to="bomi" key={animal.id} css={animalBoxStyle}>
             <div className="animal-img-wrapper">
               <img src={animal.image} alt={animal.name} />
             </div>
             <span>
               {animal.name} {animal.age} {animal.gender}
             </span>
-          </div>
+          </Link>
         ))}
       </div>
       <div css={boxStyle}>
