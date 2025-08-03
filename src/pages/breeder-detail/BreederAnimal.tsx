@@ -1,6 +1,5 @@
 import { css } from "@emotion/react";
 import { Line } from "rc-progress";
-import { useEffect, useRef } from "react";
 
 import Guide1 from "@/assets/breeder-detail/adoption-process/guide1.png";
 import Guide2 from "@/assets/breeder-detail/adoption-process/guide2.png";
@@ -144,25 +143,7 @@ const BREEDER_ANIMAL_INFO_DATA = {
   ],
 };
 
-type TabType = "기본정보" | "건강정보" | "분양과정";
-
-interface BreederAnimalProps {
-  activeTab: TabType;
-}
-
-export default function BreederAnimal({ activeTab }: BreederAnimalProps) {
-  const healthRef = useRef<HTMLElement>(null);
-  const adoptionProcessRef = useRef<HTMLElement>(null);
-  useEffect(() => {
-    let target = null;
-    if (activeTab === "건강정보") target = healthRef;
-    if (activeTab === "분양과정") target = adoptionProcessRef;
-
-    if (target?.current) {
-      target.current.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  }, [activeTab]);
-
+export default function BreederAnimal() {
   return (
     <div css={breederAnimalPage}>
       <div css={infoCardStyle}>
@@ -245,7 +226,7 @@ export default function BreederAnimal({ activeTab }: BreederAnimalProps) {
           />
         </div>
       </div>
-      <div css={infoCardStyle} ref={healthRef}>
+      <div css={infoCardStyle}>
         <h1 css={infoCardTitle}>건강상태</h1>
         <div css={healthStatusSummation}>
           <div css={healthStatusSummationDetail}>
@@ -336,7 +317,7 @@ export default function BreederAnimal({ activeTab }: BreederAnimalProps) {
           css={pedigreeCerfiticateImgStyle}
         />
       </div>
-      <div css={infoCardStyle} ref={adoptionProcessRef}>
+      <div css={infoCardStyle}>
         <h1 css={infoCardTitle}>분양과정안내</h1>
         <div css={adoptionProcessGuideDiv}>
           {BREEDER_ANIMAL_INFO_DATA.adoptoinProcessGuideInfo.map((item) => (
@@ -528,7 +509,7 @@ const healthStatusDetailCard = css`
   border: 1px solid rgba(217, 217, 217, 1);
   height: 184px;
   border-radius: 10px;
-  padding: 20px 20px;
+  padding: 20px 28.5px;
 
   > img {
     width: 76px;
@@ -542,7 +523,6 @@ const healthStatusCardDescription = css`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
 `;
 
 const healthStatusCardField = css`
@@ -557,7 +537,7 @@ const healthStatusCardField = css`
   > p {
     color: rgba(102, 102, 102, 1);
     font-weight: 400;
-    font-size: 13px;
+    font-size: 14px;
   }
 `;
 const pedigreeCerfiticateImgStyle = css`
@@ -629,7 +609,7 @@ const seeMoreBtn = css`
 
 const statusStyle = css`
   font-weight: 500;
-  font-size: 15px;
+  font-size: 16px;
   color: rgba(28, 166, 79, 1);
 `;
 const notPerformed = css`
