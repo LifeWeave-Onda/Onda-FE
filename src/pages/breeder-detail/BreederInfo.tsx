@@ -2,6 +2,7 @@ import { css } from "@emotion/react";
 import DOMPurify from "dompurify";
 import { Fragment } from "react";
 import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 import breedAnimal1 from "@/assets/breeder-detail/temp/breed-animal1.png";
 import breedAnimal2 from "@/assets/breeder-detail/temp/breed-animal2.jpg";
@@ -130,17 +131,17 @@ export default function BreederInfo({ activeTab }: BreederInfoProps) {
           ))}
         </p>
       </div>
-      <div css={boxStyle}>
+      <div css={boxStyle} ref={animalsRef}>
         <h2 css={titleStyle}>분양 동물</h2>
         {BREEDER_INFO_DATA.breedInfo.animals.map((animal) => (
-          <div key={animal.id} css={animalBoxStyle}>
+          <Link to="bomi" key={animal.id} css={animalBoxStyle}>
             <div className="animal-img-wrapper">
               <img src={animal.image} alt={animal.name} />
             </div>
             <span>
               {animal.name} {animal.age} {animal.gender}
             </span>
-          </div>
+          </Link>
         ))}
       </div>
       <div css={boxStyle}>
