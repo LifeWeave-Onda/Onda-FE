@@ -7,9 +7,6 @@ import {
   useLocation,
 } from "react-router-dom";
 
-import BreederAnimal from "@/pages/breeder-detail/BreederAnimal";
-// import BreederDetailLayout from "@/pages/breeder-detail/BreederDetailLayout";
-import BreederInfo from "@/pages/breeder-detail/BreederInfo";
 import BreederInfoPage from "@/pages/breeder-detail/BreederInfoPage";
 import BreederListPage from "@/pages/breeder-list";
 import FindIdPasswordPage from "@/pages/find-id-password";

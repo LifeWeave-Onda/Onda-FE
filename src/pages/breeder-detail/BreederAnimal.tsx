@@ -151,8 +151,8 @@ interface BreederAnimalProps {
 }
 
 export default function BreederAnimal({ activeTab }: BreederAnimalProps) {
-  const healthRef = useRef<HTMLElement>(null);
-  const adoptionProcessRef = useRef<HTMLElement>(null);
+  const healthRef = useRef<HTMLDivElement>(null);
+  const adoptionProcessRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     let target = null;
     if (activeTab === "건강정보") target = healthRef;
