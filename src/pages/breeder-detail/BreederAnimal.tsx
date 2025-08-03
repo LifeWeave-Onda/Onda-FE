@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
 import { Line } from "rc-progress";
+import { useEffect, useRef } from "react";
 
 import Guide1 from "@/assets/breeder-detail/adoption-process/guide1.png";
 import Guide2 from "@/assets/breeder-detail/adoption-process/guide2.png";
@@ -143,7 +144,25 @@ const BREEDER_ANIMAL_INFO_DATA = {
   ],
 };
 
-export default function BreederAnimal() {
+type TabType = "기본정보" | "건강정보" | "분양과정";
+
+interface BreederAnimalProps {
+  activeTab: TabType;
+}
+
+export default function BreederAnimal({ activeTab }: BreederAnimalProps) {
+  const healthRef = useRef<HTMLDivElement>(null);
+  const adoptionProcessRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    let target = null;
+    if (activeTab === "건강정보") target = healthRef;
+    if (activeTab === "분양과정") target = adoptionProcessRef;
+
+    if (target?.current) {
+      target.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [activeTab]);
+
   return (
     <div css={breederAnimalPage}>
       <div css={infoCardStyle}>
@@ -340,7 +359,7 @@ const infoCardStyle = css`
   padding: 20px;
   border-radius: 10px;
   border: none;
-  box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.24);
 `;
 
 const breederAnimalPage = css`

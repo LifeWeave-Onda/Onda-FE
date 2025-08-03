@@ -1,6 +1,7 @@
 import { css } from "@emotion/react";
 import DOMPurify from "dompurify";
 import { Fragment } from "react";
+import { useEffect, useRef } from "react";
 
 import breedAnimal1 from "@/assets/breeder-detail/temp/breed-animal1.png";
 import breedAnimal2 from "@/assets/breeder-detail/temp/breed-animal2.jpg";
@@ -48,8 +49,25 @@ const BREEDER_INFO_DATA = {
   },
   breedingEnvironment: [breedingEnvironmentImg],
 };
+type TabType = "브리더소개" | "분양중인동물" | "입양후기";
 
-export default function BreederInfo() {
+interface BreederInfoProps {
+  activeTab: TabType;
+}
+
+export default function BreederInfo({ activeTab }: BreederInfoProps) {
+  const animalsRef = useRef<HTMLDivElement>(null);
+  const reviewsRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    let target = null;
+    if (activeTab === "분양중인동물") target = animalsRef;
+    if (activeTab === "입양후기") target = reviewsRef;
+
+    if (target?.current) {
+      target.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [activeTab]);
+
   return (
     <div css={breedeerInfoContainerStyle}>
       <div css={boxStyle}>
