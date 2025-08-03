@@ -44,7 +44,6 @@ export default function Router() {
           path="/breeder-detail/:id"
           element={<Navigate to="info" replace />}
         />
-
         <Route path="/breeder-detail/:id/*" element={<BreederInfoPage />} />
       </Routes>
     </BrowserRouter>
