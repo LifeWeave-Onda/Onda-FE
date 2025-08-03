@@ -245,7 +245,7 @@ export default function BreederAnimal({ activeTab }: BreederAnimalProps) {
           />
         </div>
       </div>
-      <div css={infoCardStyle}>
+      <div css={infoCardStyle} ref={healthRef}>
         <h1 css={infoCardTitle}>건강상태</h1>
         <div css={healthStatusSummation}>
           <div css={healthStatusSummationDetail}>
@@ -336,7 +336,7 @@ export default function BreederAnimal({ activeTab }: BreederAnimalProps) {
           css={pedigreeCerfiticateImgStyle}
         />
       </div>
-      <div css={infoCardStyle}>
+      <div css={infoCardStyle} ref={adoptionProcessRef}>
         <h1 css={infoCardTitle}>분양과정안내</h1>
         <div css={adoptionProcessGuideDiv}>
           {BREEDER_ANIMAL_INFO_DATA.adoptoinProcessGuideInfo.map((item) => (
